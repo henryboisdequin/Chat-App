@@ -3,8 +3,11 @@ import "./App.css";
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div className="app">
+      <div className="app-body">
+        {/* Side Bar */}
+        {/* Chat */}
+      </div>
     </div>
   );
 }
