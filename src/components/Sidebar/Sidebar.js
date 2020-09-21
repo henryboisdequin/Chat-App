@@ -4,6 +4,7 @@ import DoughnutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/Search";
+import SidebarChat from "./SidebarChat/SidebarChat";
 import "./Sidebar.css";
 
 export default function Sidebar() {
@@ -29,7 +30,9 @@ export default function Sidebar() {
           <input placeholder="Search for a Chat" type="text" />
         </div>
       </div>
-      <div className="sidebar-chats"></div>
+      <div className="sidebar-chats">
+        <SidebarChat />
+      </div>
     </div>
   );
 }
