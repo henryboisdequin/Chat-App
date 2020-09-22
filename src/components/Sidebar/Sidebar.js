@@ -33,6 +33,9 @@ export default function Sidebar() {
       <div className="sidebar-chats">
         <SidebarChat addNewChat />
         <SidebarChat />
+        <SidebarChat />
+        <SidebarChat />
+        <SidebarChat />
       </div>
     </div>
   );

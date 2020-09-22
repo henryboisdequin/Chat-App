@@ -12,10 +12,10 @@ export default function SidebarChat({ addNewChat }) {
   }, []);
 
   const createChat = () => {
-    const roomName = window.prompt("Enter the Chat Name");
+    const roomName = window.prompt("Enter the Chat Name:");
 
     if (roomName) {
-      // do something
+      // do
     }
   };
 
