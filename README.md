@@ -1,6 +1,6 @@
 # Chat-App
 
-Build a chat app with React, Firebase, and Redux. This app is responsive and uses flex box.
+Built a chat app with React, Firebase, and Redux. This app is responsive and uses flex box.
 
 ### Website
 
