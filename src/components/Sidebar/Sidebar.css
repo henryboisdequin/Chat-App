@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -58,4 +60,9 @@
   flex: 1;
   background-color: white;
   overflow: scroll;
+}
+
+.sidebar-name {
+  font-size: medium;
+  font-family: "Poppins", sans-serif;
 }

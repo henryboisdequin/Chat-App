@@ -32,7 +32,6 @@ export default function Login() {
           <h1>Sign In to Chat</h1>
         </div>
         <Button onClick={signIn}>Sign In With Google</Button>
-        {/* <Button onClick={signIn}>Sign In With Github</Button> */}
       </div>
     </div>
   );

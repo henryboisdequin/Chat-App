@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, IconButton } from "@material-ui/core";
-import DoughnutLargeIcon from "@material-ui/icons/DonutLarge";
-import ChatIcon from "@material-ui/icons/Chat";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { Avatar } from "@material-ui/core";
 import SearchOutlined from "@material-ui/icons/Search";
 import SidebarChat from "./SidebarChat/SidebarChat";
 import "./Sidebar.css";
@@ -33,15 +30,7 @@ export default function Sidebar() {
       <div className="sidebar-header">
         <Avatar src={user?.photoURL} />
         <div className="sidebar-headerRight">
-          <IconButton>
-            <DoughnutLargeIcon />
-          </IconButton>
-          <IconButton>
-            <ChatIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
+          <h1 className="sidebar-name">Signed In As {user.displayName}</h1>
         </div>
       </div>
       <div className="sidebar-search">
