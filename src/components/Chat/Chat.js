@@ -6,18 +6,30 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
 import { useParams } from "react-router-dom";
 import db from "../../firebase";
+import { useStateValue } from "../../StateProvider";
+import firebase from "firebase";
 
 export default function Chat() {
   const [input, setInput] = useState("");
   const [seed, setSeed] = useState("");
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (roomId) {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+
+      db.collection("rooms")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessages(snapshot.docs.map((doc) => doc.data()))
+        );
     }
   }, [roomId]);
 
@@ -27,7 +39,13 @@ export default function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    window.alert(input);
+
+    db.collection("rooms").doc(roomId).collection("messages").add({
+      message: input,
+      name: user.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
     setInput("");
   };
 
@@ -52,11 +70,19 @@ export default function Chat() {
         </div>
       </div>
       <div className="chat-body">
-        <p className={`chat-message ${true && "chat-receiver"}`}>
-          <span className="chat-name">Henry</span>
-          Hello!
-          <span className="chat-timestamp">8:12 AM</span>
-        </p>
+        {messages.map((message) => (
+          <p
+            className={`chat-message ${
+              message.name === user.displayName && "chat-receiver"
+            }`}
+          >
+            <span className="chat-name">{message.name}</span>
+            {message.message}
+            <span className="chat-timestamp">
+              {new Date(message.timestamp?.toDate()).toUTCString()}
+            </span>
+          </p>
+        ))}
       </div>
       <div className="chat-footer">
         <InsertEmoticonIcon />
