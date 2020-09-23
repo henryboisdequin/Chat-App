@@ -18,7 +18,7 @@ export default function SidebarChat({ addNewChat, name, id }) {
       .onSnapshot((snapshot) =>
         setMessages(snapshot.docs.map((doc) => doc.data()))
       );
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     // Random number 0-1000
